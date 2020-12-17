@@ -1,6 +1,14 @@
 const API = process.env.API;
 const apikey = process.env.API_KEY;
 
+const arrayToObj = (obj, [key, value]) => ({
+  ...obj,
+  [key.replace(/^\d+[.] /g, "")]: value,
+});
+
+const parserItem = (item) => Object.entries(item).reduce(arrayToObj, {});
+const parser = ({ bestMatches = [] }) => bestMatches.map(parserItem);
+
 const url = (keywords) => {
   const params = new URLSearchParams({
     function: "SYMBOL_SEARCH",
@@ -10,8 +18,6 @@ const url = (keywords) => {
 
   return `${API}/query?${params.toString()}`;
 };
-
-const parser = (result) => result.bestMatches;
 
 export default ({ query: { keywords } }, res) =>
   fetch(url(keywords))

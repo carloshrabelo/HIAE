@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-const api = "/api/search";
+const api = "/api/stocks";
 const name = "STOCKS";
 
 export const initialState = {
