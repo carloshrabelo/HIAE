@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from "react";
-
-const api = "/api/search";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { find } from "redux/stocks";
 
 const Home = () => {
-  const [result, setResult] = useState({});
+  const dispatch = useDispatch();
+  const stocks = useSelector((state) => state.stocks);
   useEffect(() => {
-    fetch(`${api}/tesco`)
-      .then((response) => {
-        if (!response.ok) throw Error(response.statusText);
-        return response.json();
-      })
-      .then(setResult);
+    dispatch(find("tesco"));
   }, []);
   return (
     <>
       <h1>WIP</h1>
-      <pre>{JSON.stringify(result, null, 2)}</pre>
+      <pre>{JSON.stringify(stocks, null, 2)}</pre>
     </>
   );
 };

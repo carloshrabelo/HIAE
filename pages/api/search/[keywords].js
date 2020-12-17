@@ -11,7 +11,10 @@ const url = (keywords) => {
   return `${API}/query?${params.toString()}`;
 };
 
+const parser = (result) => result.bestMatches;
+
 export default ({ query: { keywords } }, res) =>
   fetch(url(keywords))
     .then((response) => response.json())
+    .then(parser)
     .then(res.json);
