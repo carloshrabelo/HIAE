@@ -1,0 +1,101 @@
+[
+  {
+    "symbol": "FB",
+    "name": "Facebook Inc.",
+    "type": "Equity",
+    "region": "United States",
+    "marketOpen": "09:30",
+    "marketClose": "16:00",
+    "timezone": "UTC-05",
+    "currency": "USD",
+    "matchScore": "1.0000"
+  },
+  {
+    "symbol": "FBGRX",
+    "name": "Fidelity Blue Chip Growth Fund",
+    "type": "Mutual Fund",
+    "region": "United States",
+    "marketOpen": "09:30",
+    "marketClose": "16:00",
+    "timezone": "UTC-05",
+    "currency": "USD",
+    "matchScore": "0.8000"
+  },
+  {
+    "symbol": "FBIOX",
+    "name": "Fidelity Select Biotechnology Portfolio",
+    "type": "Mutual Fund",
+    "region": "United States",
+    "marketOpen": "09:30",
+    "marketClose": "16:00",
+    "timezone": "UTC-05",
+    "currency": "USD",
+    "matchScore": "0.8000"
+  },
+  {
+    "symbol": "FBALX",
+    "name": "Fidelity Balanced Fund",
+    "type": "Mutual Fund",
+    "region": "United States",
+    "marketOpen": "09:30",
+    "marketClose": "16:00",
+    "timezone": "UTC-05",
+    "currency": "USD",
+    "matchScore": "0.6667"
+  },
+  {
+    "symbol": "FBSOX",
+    "name": "Fidelity Select IT Services Portfolio",
+    "type": "Mutual Fund",
+    "region": "United States",
+    "marketOpen": "09:30",
+    "marketClose": "16:00",
+    "timezone": "UTC-05",
+    "currency": "USD",
+    "matchScore": "0.6667"
+  },
+  {
+    "symbol": "FBHS",
+    "name": "Fortune Brands Home & Security Inc.",
+    "type": "Equity",
+    "region": "United States",
+    "marketOpen": "09:30",
+    "marketClose": "16:00",
+    "timezone": "UTC-05",
+    "currency": "USD",
+    "matchScore": "0.5714"
+  },
+  {
+    "symbol": "FBIO",
+    "name": "Fortress Biotech Inc.",
+    "type": "Equity",
+    "region": "United States",
+    "marketOpen": "09:30",
+    "marketClose": "16:00",
+    "timezone": "UTC-05",
+    "currency": "USD",
+    "matchScore": "0.5714"
+  },
+  {
+    "symbol": "FBP",
+    "name": "First BanCorp.",
+    "type": "Equity",
+    "region": "United States",
+    "marketOpen": "09:30",
+    "marketClose": "16:00",
+    "timezone": "UTC-05",
+    "currency": "USD",
+    "matchScore": "0.5714"
+  },
+  {
+    "symbol": "FBC",
+    "name": "Flagstar Bancorp Inc.",
+    "type": "Equity",
+    "region": "United States",
+    "marketOpen": "09:30",
+    "marketClose": "16:00",
+    "timezone": "UTC-05",
+    "currency": "USD",
+    "matchScore": "0.5714"
+  }
+]

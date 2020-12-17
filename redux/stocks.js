@@ -4,20 +4,23 @@ const api = "/api/stocks";
 const name = "STOCKS";
 
 export const initialState = {
-  isLoading: true,
+  isLoading: false,
   error: false,
-  data: {},
+  data: [],
 };
 
-export const REQUEST = `REQUEST_${name}`;
-export const FAILURE = `FAILURE_${name}`;
-export const SUCCESS = `SUCCESS_${name}`;
-
+export const types = {
+  REQUEST: `REQUEST_${name}`,
+  FAILURE: `FAILURE_${name}`,
+  SUCCESS: `SUCCESS_${name}`,
+  RESET: `RESET_${name}`,
+};
 const isLoading = (state = initialState.isLoading, { type }) => {
   const mapping = {
-    [SUCCESS]: false,
-    [REQUEST]: true,
-    [FAILURE]: false,
+    [types.RESET]: initialState.isLoading,
+    [types.SUCCESS]: false,
+    [types.REQUEST]: true,
+    [types.FAILURE]: false,
   };
 
   return Object.prototype.hasOwnProperty.call(mapping, type)
@@ -27,9 +30,10 @@ const isLoading = (state = initialState.isLoading, { type }) => {
 
 const error = (state = initialState.error, { type, message }) => {
   const mapping = {
-    [SUCCESS]: false,
-    [REQUEST]: false,
-    [FAILURE]: message || true,
+    [types.RESET]: initialState.error,
+    [types.SUCCESS]: false,
+    [types.REQUEST]: false,
+    [types.FAILURE]: message || true,
   };
 
   return Object.prototype.hasOwnProperty.call(mapping, type)
@@ -39,28 +43,35 @@ const error = (state = initialState.error, { type, message }) => {
 
 const data = (state = initialState.data, { type, payload }) => {
   const mapping = {
-    [SUCCESS]: payload,
-    [FAILURE]: initialState.data,
+    [types.RESET]: initialState.data,
+    [types.SUCCESS]: payload,
+    [types.FAILURE]: initialState.data,
   };
 
   return mapping[type] || state;
 };
 
 export const request = (params) => ({
-  type: REQUEST,
+  type: types.REQUEST,
   params,
 });
 
+export const reset = () => ({
+  type: types.RESET,
+});
+
 export const onSuccess = (payload) => ({
-  type: SUCCESS,
+  type: types.SUCCESS,
   payload,
 });
 
 export const onError = () => ({
-  type: FAILURE,
+  type: types.FAILURE,
 });
 
 export const find = (query) => (dispatch) => {
+  if (!query) return dispatch(reset());
+
   dispatch(request());
 
   return fetch(`${api}/${query}`)
