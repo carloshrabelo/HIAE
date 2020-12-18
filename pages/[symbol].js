@@ -6,13 +6,14 @@ import Link from "next/link";
 import { find, reset } from "redux/stock";
 
 import CandleChart from "components/CandleChart";
+import Navbar from "components/Navbar";
 
 const Home = () => {
   const dispatch = useDispatch();
 
   const router = useRouter();
   const { symbol } = router.query;
-  const { data } = useSelector((state) => state.stock);
+  const { data, isLoading } = useSelector((state) => state.stock);
 
   useEffect(() => {
     dispatch(find(symbol));
@@ -21,8 +22,11 @@ const Home = () => {
 
   return (
     <>
-      <Link href="/">Voltar</Link>
-      <CandleChart data={data} />
+      <Navbar>
+        <Link href="/">Voltar</Link>
+        <span>Stocks Application</span>
+      </Navbar>
+      <CandleChart data={data} isLoading={isLoading} />
     </>
   );
 };

@@ -42,8 +42,8 @@ export const Item = styled.li`
   list-style: none;
 
   a {
-    background: var(--bg);
-    display: block;
+    display: grid;
+    grid-template-columns: 7em 1fr 32px;
     padding: var(--space);
     text-decoration: none;
 

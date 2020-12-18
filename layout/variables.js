@@ -8,6 +8,8 @@ export default css`
   --primary-contrast: var(--white);
   --primary-darken: #111370;
 
+  --secondary: #8a09be;
+
   --black: #202020;
 
   --gray: #999;
@@ -16,6 +18,7 @@ export default css`
   --danger: #ff1744;
 
   --bg: var(--white);
+  /* --bg: linear-gradient(128deg, var(--primary-darken) 0%, var(--secondary) 100%); */
   --bg-hover: #f5f5f5;
 
   --text-color: var(--black);

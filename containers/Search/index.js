@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { find } from "redux/stocks";
 import debounce from "helpers/debounce";
 
+import Spiner from "components/Spiner";
+
 import Item from "./Item";
 import * as S from "./styles";
 
@@ -38,7 +40,8 @@ const Search = (props) => {
           placeholder="Search for symbols or companies"
           autoComplete="off"
         />
-        <S.Button>{isLoading ? "♺" : "🔍"}</S.Button>
+
+        <S.Button>{isLoading ? <Spiner color="primary" /> : "🔍"}</S.Button>
       </S.Form>
       {showList && (
         <S.List>

@@ -1,6 +1,9 @@
-import dynamic from "next/dynamic";
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import dynamic from "next/dynamic";
+
 import getOptions from "./getOptions";
+import LoadingState from "./LoadingState";
 
 const parserData = (value) => [
   value.date,
@@ -12,19 +15,28 @@ const parserData = (value) => [
 
 const parserLinear = (value) => [value.date, value.close - value.open];
 
-let ReactApexChart = () => null;
-const ApexChart = ({ data = [] }) => {
+let ReactApexChart = LoadingState;
+const CandleChart = ({ data = [], isLoading }) => {
   useEffect(() => {
-    if (typeof window !== "undefined")
+    if (
+      typeof window !== "undefined" &&
+      !isLoading &&
+      ReactApexChart === LoadingState
+    )
       ReactApexChart = dynamic(() => import("react-apexcharts"));
-  }, []);
+  }, [isLoading]);
 
   const seriesData = data.map(parserData);
   const seriesDataLinear = data.map(parserLinear);
 
   const { options, optionsBar } = getOptions();
 
-  return (
+  return isLoading ? (
+    <>
+      <LoadingState />
+      <LoadingState />
+    </>
+  ) : (
     <>
       <ReactApexChart
         options={options}
@@ -50,4 +62,17 @@ const ApexChart = ({ data = [] }) => {
   );
 };
 
-export default ApexChart;
+CandleChart.propTypes = {
+  isLoading: PropTypes.bool,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      date: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      open: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      high: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      low: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      close: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    })
+  ),
+};
+
+export default CandleChart;
