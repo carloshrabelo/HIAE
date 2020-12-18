@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import { css } from "styled-components";
 
 export default css`
   --white: #fff;
@@ -11,6 +11,9 @@ export default css`
   --black: #202020;
 
   --gray: #999;
+
+  --success: #1de9b6;
+  --danger: #ff1744;
 
   --bg: var(--white);
   --bg-hover: #f5f5f5;
@@ -30,4 +33,4 @@ export default css`
   --space-xlg: 64px;
 
   --transition: 0.3s;
-`
+`;
